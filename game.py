@@ -30,14 +30,19 @@ yp = HEIGHT - height
 vp = 10
 num = 1.5
 
+counter = 0
+
 def drawScore():
     win.fill(black)
     pygame.font.init()
     path = pygame.font.match_font("arial")
     Font = pygame.font.Font(path, 30)
     text = ''.join([chr(int(str(el), 8)) for el in [107, 141, 155, 145, 40, 157, 166, 145, 162]])
+    text_2 = "Your score: " + str(counter)
     a = Font.render(text, 1, (255, 255, 255))
+    b = Font.render(text_2, 1, (255, 255, 255))
     win.blit(a, (WIDTH // 2 - 70, HEIGHT // 3))
+    win.blit(b, (WIDTH // 2 - 75, HEIGHT // 2.2))
     pygame.display.update()
 
 def drawWindow():
@@ -76,6 +81,7 @@ while run:
             vx *= num
             vy *= num
             vy = -vy
+            counter += 1
         else:
             drawScore()
             sleep(10)
